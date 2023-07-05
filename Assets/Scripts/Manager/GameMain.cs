@@ -130,7 +130,7 @@ public class GameMain : MonoBehaviour
         //WWWForm form = new WWWForm();
         //form.AddField("Content-Type","application/json");
         //form.AddBinaryData("file", bytes);
-        UnityWebRequest webRequest = new ($"http://118.89.67.218:88/?Name={m_infomationData.Name}&PhoneNumber={m_infomationData.PhoneNumber}&CompanyOrSchool={m_infomationData.CompanyOrSchool}&Phase={m_infomationData.Phase}", "GET");
+        UnityWebRequest webRequest = new ($"http://114.116.1.163:39900/?Name={m_infomationData.Name}&PhoneNumber={m_infomationData.PhoneNumber}&CompanyOrSchool={m_infomationData.CompanyOrSchool}&Phase={m_infomationData.Phase}", "GET");
         Debug.Log(webRequest.url);
 
         yield return webRequest.SendWebRequest();
