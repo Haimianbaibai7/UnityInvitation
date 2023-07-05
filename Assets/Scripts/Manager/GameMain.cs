@@ -19,7 +19,7 @@ public class GameMain : MonoBehaviour
     public PlayableDirector Director;
     private InformationPanel m_InformationPanel;
     private TicketPanel m_TicketPanel;
-    public string WebRequestUrl = "";
+    public string WebRequestUrl = "http://118.89.67.218:88";
 
     private InformationData m_infomationData;
 
@@ -130,20 +130,18 @@ public class GameMain : MonoBehaviour
         //WWWForm form = new WWWForm();
         //form.AddField("Content-Type","application/json");
         //form.AddBinaryData("file", bytes);
-        UnityWebRequest webRequest = new (WebRequestUrl, "POST");
-        webRequest.uploadHandler = new UploadHandlerRaw(bytes);
-        webRequest.downloadHandler = new DownloadHandlerBuffer();
-        webRequest.SetRequestHeader("Content-Type", "application/json");
+        UnityWebRequest webRequest = new ($"http://118.89.67.218:88/?Name={m_infomationData.Name}&PhoneNumber={m_infomationData.PhoneNumber}&CompanyOrSchool={m_infomationData.CompanyOrSchool}&Phase={m_infomationData.Phase}", "GET");
+        Debug.Log(webRequest.url);
 
         yield return webRequest.SendWebRequest();
-        if (webRequest.result != UnityWebRequest.Result.Success)
-        {
-            Debug.Log("success!");
-        }
-        else
-        {
-            Debug.LogError("web error!");
-        }
+        // if (webRequest.result != UnityWebRequest.Result.Success)
+        // {
+        //     Debug.Log("success!");
+        // }
+        // else
+        // {
+        //     Debug.LogError("web error!");
+        // }
         webRequest.Dispose();
     }
 

@@ -28,7 +28,7 @@ public class InformationPanel : PanelBase
         }
 
         infomationData.Name = Name.text;
-        infomationData.PhoneNember = Phone.text;
+        infomationData.PhoneNumber = Phone.text;
         infomationData.CompanyOrSchool = School.text;
         infomationData.Phase = Num.text;
 

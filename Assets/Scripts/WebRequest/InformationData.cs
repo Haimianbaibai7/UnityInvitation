@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class InformationData
 {
     public string Name;
-    public string PhoneNember;
+    public string PhoneNumber;
     public string CompanyOrSchool;
     public string Phase;
 }

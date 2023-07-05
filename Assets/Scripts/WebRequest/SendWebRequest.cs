@@ -28,7 +28,7 @@ public class SendWebRequest : MonoBehaviour
     {
         InformationData informationData = new InformationData();
         informationData.Name = "�����"+i;
-        informationData.PhoneNember = "13940681721" + i;
+        informationData.PhoneNumber = "13940681721" + i;
         informationData.CompanyOrSchool = "Unity�й�" + i;
         informationData.Phase = "Unity��ѧʮ����" + i;
         i++;

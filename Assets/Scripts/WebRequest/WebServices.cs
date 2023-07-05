@@ -82,7 +82,7 @@ public class WebServices
                         string jsonString = reader.ReadToEnd();
                         //TODO:
                         InformationData informationData = JsonUtility.FromJson<InformationData>(jsonString);
-                        Debug.Log($"WebService--------- {informationData.Name} : {informationData.PhoneNember} : {informationData.CompanyOrSchool} : {informationData.Phase}");
+                        Debug.Log($"WebService--------- {informationData.Name} : {informationData.PhoneNumber} : {informationData.CompanyOrSchool} : {informationData.Phase}");
                         CreateExcel(informationData);
 
                     }
