@@ -19,7 +19,7 @@ public class GameMain : MonoBehaviour
     public PlayableDirector Director;
     private InformationPanel m_InformationPanel;
     private TicketPanel m_TicketPanel;
-    public string WebRequestUrl = "http://124.222.18.199:80/";
+    public string WebRequestUrl = "";
 
     private InformationData m_infomationData;
 
@@ -36,11 +36,6 @@ public class GameMain : MonoBehaviour
         CreateItems();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ShowInformationPanel()
     {
@@ -116,8 +111,8 @@ public class GameMain : MonoBehaviour
         m_infomationData = infomationData;
         //TODO:上传服务端 不用等待回调
 
-        //StartCoroutine(CallWebRequest());
-        CreateExcel();
+        StartCoroutine(CallWebRequest());
+        //CreateExcel();
 
         //生成专属票根
 
@@ -187,38 +182,38 @@ public class GameMain : MonoBehaviour
 
     }
 
-    void CreateExcel()
-    {
-        string sendString = JsonUtility.ToJson(m_infomationData);
-        //string outPutDir = "/www/wwwroot/studentdata/" + "UniversarySignInForm.txt";
-        string outPutDir = Application.streamingAssetsPath+ "/UniversarySignInForm.txt";
-        Debug.Log(outPutDir);
-        FileInfo newFile = new FileInfo(outPutDir);
+    //void CreateExcel()
+    //{
+    //    string sendString = JsonUtility.ToJson(m_infomationData);
+    //    //string outPutDir = "/www/wwwroot/studentdata/" + "UniversarySignInForm.txt";
+    //    string outPutDir = Application.streamingAssetsPath+ "/UniversarySignInForm.txt";
+    //    Debug.Log(outPutDir);
+    //    FileInfo newFile = new FileInfo(outPutDir);
 
-        string jsonString = "";
+    //    string jsonString = "";
 
-        if (newFile.Exists)
-        {
-            using (FileStream fs = File.Open(outPutDir, FileMode.Open, FileAccess.Read, FileShare.None))
-            {
-                byte[] bs = new byte[fs.Length];
-                fs.Read(bs, 0, bs.Length);
-                jsonString = System.Text.Encoding.UTF8.GetString(bs);
+    //    if (newFile.Exists)
+    //    {
+    //        using (FileStream fs = File.Open(outPutDir, FileMode.Open, FileAccess.Read, FileShare.None))
+    //        {
+    //            byte[] bs = new byte[fs.Length];
+    //            fs.Read(bs, 0, bs.Length);
+    //            jsonString = System.Text.Encoding.UTF8.GetString(bs);
 
-            }
-            newFile.Delete();
-        }
+    //        }
+    //        newFile.Delete();
+    //    }
 
-        using (FileStream fs = new FileStream(outPutDir, FileMode.Create))
-        {
-            jsonString = jsonString + "\r\n" + sendString;
-            //Console.WriteLine("CreateExcel:" + outPutDir);
-            byte[] bs = Encoding.UTF8.GetBytes(jsonString);
-            fs.Write(bs, 0, bs.Length);
-            fs.Flush();
-            fs.Close();
-            fs.Dispose();
-        }
-    }
+    //    using (FileStream fs = new FileStream(outPutDir, FileMode.Create))
+    //    {
+    //        jsonString = jsonString + "\r\n" + sendString;
+    //        //Console.WriteLine("CreateExcel:" + outPutDir);
+    //        byte[] bs = Encoding.UTF8.GetBytes(jsonString);
+    //        fs.Write(bs, 0, bs.Length);
+    //        fs.Flush();
+    //        fs.Close();
+    //        fs.Dispose();
+    //    }
+    //}
 
 }
